@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stores</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center">Tiendas de la ciudad {{nameCity}}</h2>
+        <table class="table table-dark" *ngIf="stores.length != 0; else elseBlock">
+            <thead class="text-center">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let store of stores" class="text-center">
+                    <td>{{store.id}}</td>
+                    <td>{{store.name}}</td>
+                    <td>
+                        <button (click)="deleteStores(store)" class="btn btn-danger">Delete</button>
+                        &nbsp;
+                        <button (click)="updateStores(store)" class="btn btn-warning">Edit</button>
+                        &nbsp;
+                        <button (click)="listProducts(store)" class="btn btn-primary">View Products</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div *ngIf="stores.length == 0" style="color: red; font-size: 25px; text-align: center;">¡No existen tiendas!</div> -->
+        <!-- <ng-template [ngIf]="stores.length == 0">
+            <div style="color: red; font-size: 25px; text-align: center;">¡No existen tiendas!</div>
+        </ng-template> -->
+        <ng-template #elseBlock>
+            <div style="color: red; font-size: 25px; text-align: center;">¡No existen tiendas!</div>
+        </ng-template>
+        <div class="text-center">
+            <button (click)="createStore()" class="btn btn-success">Create Store</button>
+        </div>
+    </div>
+</body>
+
+</html>

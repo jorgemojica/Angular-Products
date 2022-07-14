@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center">Productos Disponibles en Tiendas</h2>
+        <table class="table table-dark" *ngIf="products.length != 0; else elseBlock">
+            <thead class="text-center">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products" class="text-center">
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>
+                        <button (click)="updateGeneralProduct(product)" class="btn btn-warning">Edit</button>
+                        &nbsp;
+                        <button (click)="deleteGeneralProduct(product)" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button (click)="createProductGeneral()" class="btn btn-success">Create Product</button>
+        </div>
+        <br>
+        <ng-template #elseBlock>
+            <div style="color: red; font-size: 25px; text-align: center;">¡No existen productos!</div>
+        </ng-template>
+    </div>
+</body>
+
+</html>
